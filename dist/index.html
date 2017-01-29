@@ -234,10 +234,29 @@ slider.add([40, 50]);</pre>
         <div id="slider_options_maxRanges"></div>
         <hr>
 
-        <h3>rangeLabel</h3>
+        <h3>label</h3>
         <p>
             function that transforms range value to text written inside the label.
-        </p>
+<pre>
+    label: function (value) {
+      var minutes = value[1] - value[0];
+      var hours = minutes / 60;
+      if (hours == 1) {
+        return 'one hour';
+      }
+      if (hours < 1) {
+        return 'less than an hour';
+      }
+      if (hours > 1) {
+        var result = parseInt(hours) + " hours";
+        if ((hours % 1).toFixed(2) == "0.50") {
+          result += " and a half";
+        }
+        return result;
+      }
+    }
+</pre>
+    </p>
         <hr>
 
         <h3>minWidth</h3>
